@@ -59,4 +59,4 @@ class LedRGB {
   	uint8_t _pinB;
 };
 
-#endif
+#endif /* LedRGB */

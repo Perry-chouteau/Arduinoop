@@ -17,15 +17,6 @@ class Led {
 		};
 
   	void AnalogWrite(int val) {
-		  //switch(_pin) {
-		  //  case 13:
-		  //  case 12:
-		  //  case 8:
-		  //  case 7:
-		  //  case 2:
-		  //    Serial.println("not analog pin");
-		  //    break;
-		  //}
 			analogWrite(_pin, val);
 		};
 
@@ -33,4 +24,4 @@ class Led {
   	uint8_t _pin;
 };
 
-#endif
+#endif /* Led */

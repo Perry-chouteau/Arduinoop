@@ -34,4 +34,4 @@ class Joystick {
   	uint8_t _pinSW;
 };
 
-#endif
+#endif /* Joystick */
