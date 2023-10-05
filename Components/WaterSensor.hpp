@@ -1,18 +1,30 @@
 #ifndef WaterSensor_h
 #define WaterSensor_h
 
-class WaterSensor {
-  public:
-  	WaterSensor(uint8_t pin) {
-			pinMode(_pin, INPUT);
-		};
+#include "IComponent.hpp"
 
-  	int Read(){
-			return analogRead(_pin);
-		};
+namespace Component {
 
-  private:
-  	uint8_t _pin;
-};
+	class WaterSensor: public IComponent {
+	  public:
+	  	WaterSensor(uint8_t pin) {
+				pinMode(_pin, INPUT);
+			};
+
+	  	int Read(){
+				return analogRead(_pin);
+			};
+
+
+			void Info() override {
+        Serial.print("WaterSensor: ");
+        Serial.print(_pin);
+      }
+
+	  private:
+	  	uint8_t _pin;
+	};
+
+}
 
 #endif /* WaterSensor_h */

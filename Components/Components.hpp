@@ -2,6 +2,8 @@
 
   #define Components_hpp
 
+  #include <Arduino.h>
+
   #include "Button.hpp"
   #include "Joystick.hpp"
   #include "Led.hpp"
@@ -9,8 +11,8 @@
   #include "Potentiometer.hpp"
 
   //to verify
-  #include "RfidRc522.hpp"
   #include "Dht11.hpp"
+  #include "RfidRc522.hpp"
   #include "WaterSensor.hpp"
 
 #endif /* Components_hpp */

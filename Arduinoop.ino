@@ -1,15 +1,16 @@
+#include <Vector.h>
+
 #include "Components/Components.hpp"
+#include "Controllers/Controllers.hpp"
 #include "Arduino.h"
 
-Led  led(2);
+Component::Dht11 dht(2);
+Arduino::Uno board;
 
 void setup(){
   Serial.begin(9600);
 }
 
 void loop(){
-  led.DigitalWrite(HIGH);
-  delay(100);
-  led.DigitalWrite(LOW);
-  delay(100);
+  Component::Dht11 dht2 = board.AddDht11(2);
 }
