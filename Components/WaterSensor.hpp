@@ -2,6 +2,7 @@
 #define WaterSensor_h
 
 #include "IComponent.hpp"
+#include "Arduino.h"
 
 namespace Component {
 

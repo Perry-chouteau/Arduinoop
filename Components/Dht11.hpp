@@ -5,12 +5,18 @@
 
 //Arduino install (dht/ada fruit) from library manager.
 #include <DHT.h>
+#include "Arduino.h"
 
 namespace Component {
 
   class Dht11: public IComponent {
     public:
-      Dht11(uint8_t pin): _pin(pin), _dht(pin, DHT11) {
+      Dht11(): _dht(2, DHT11) {
+
+      };
+      Dht11(uint8_t pin): _dht(pin, DHT11) {
+        _pin = pin;
+        pinMode(pin, INPUT);
         _dht.begin();
       }
 

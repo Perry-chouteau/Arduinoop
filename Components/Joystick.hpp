@@ -33,8 +33,11 @@ namespace Component {
 
 			void Info() override {
         Serial.print("JOYSTICK: ");
-        Serial.println(_pinX);
-        Serial.println(_pinY);
+        Serial.print("vrx=");
+        Serial.print(_pinX);
+        Serial.print(", vry=");
+        Serial.print(_pinY);
+        Serial.print(", sw=");
         Serial.println(_pinSW);
       }
 

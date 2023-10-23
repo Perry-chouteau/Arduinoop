@@ -9,7 +9,9 @@
   #include "Led.hpp"
   #include "LedRGB.hpp"
   #include "Potentiometer.hpp"
-
+  #include "ServoMotor.hpp"
+  #include "Max72XX.hpp"
+ 
   //to verify
   #include "Dht11.hpp"
   #include "RfidRc522.hpp"

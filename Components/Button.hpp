@@ -21,7 +21,7 @@ namespace Component {
 			};
 
       void Info() override {
-        Serial.print("BUTTON: ");
+        Serial.print("BUTTON : ");
         Serial.println(_pin);
       }
 

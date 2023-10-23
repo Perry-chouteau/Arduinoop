@@ -6,15 +6,19 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <Arduino.h>
+#include "Arduino.h"
 
 namespace Component {
 
 	class LedRGB: public IComponent {
 	  public:
+			LedRGB() = default;
+
 	  	LedRGB(uint8_t pinR, uint8_t pinG, uint8_t pinB) {
 				_pinR = pinR;
 				_pinG = pinG;
 				_pinB = pinB;
+
 				pinMode(_pinR, OUTPUT);
 				pinMode(_pinG, OUTPUT);
 				pinMode(_pinB, OUTPUT);
@@ -58,10 +62,12 @@ namespace Component {
 			};
 
 			void Info() override {
-        Serial.print("LedRGB: ");
-        Serial.print(_pinR);
-        Serial.print(_pinG);
-        Serial.println(_pinB);
+        Serial.print("LedRGB: r");
+        Serial.print(int(_pinR));
+        Serial.print(", g");
+        Serial.print(int(_pinG));
+        Serial.print(", b");
+        Serial.println(int(_pinB));
       }
 
 	  private:

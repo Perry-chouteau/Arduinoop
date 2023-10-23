@@ -6,20 +6,27 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <Arduino.h>
+#include "Arduino.h"
 
 namespace Component {
 
 	class Led: public IComponent {
 	  public:
+			Led() = default;
+
 	  	Led(uint8_t pin) {
 				_pin = pin;
-				pinMode(_pin, OUTPUT);
+				pinMode(pin, OUTPUT);
 			};
-	
-	  	void DigitalWrite(uint8_t val){
-				digitalWrite(_pin, val);
-			};
-	
+
+			void On() {
+				digitalWrite(_pin, HIGH);
+			}
+
+			void Off() {
+				digitalWrite(_pin, LOW);
+			}
+
 	  	void AnalogWrite(int val) {
 				analogWrite(_pin, val);
 			};
@@ -27,10 +34,16 @@ namespace Component {
 			void Info() override {
         Serial.print("LED: ");
         Serial.println(_pin);
+				Serial.flush();
       }
+
+			void SetPin(uint8_t pin) {
+				_pin = pin;
+			}
 
 	  private:
 	  	uint8_t _pin;
+			char str[4];
 	};
 
 } // namespace Component
