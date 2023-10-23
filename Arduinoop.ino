@@ -25,33 +25,40 @@ void setup(){
 }
 
 void loop() {
-    restart = (restart) ? Restart(screen) : Start(screen);
-    delay(2000);
-    if (restart) { 
-      None(screen);
+  restart = (restart) ? Restart(screen) : Start(screen);
+  delay(2000);
+  if (restart) { 
+    for (int i = 0; i < 8; i++) {
+      for (int j = 0; j < 8; j++) {
+        info[i][j] = 0;
+      }
     }
+    None(screen);
+  }
+  
+  //Build P1
+  P1(screen);
+  delay(2000);
+  Build(screen);
+  delay(2000);
+  PlaceBoat(screen, Base1);
+  delay(2000);
+  
+  //Build P2;
+  P2(screen);
+  delay(2000);
+  Build(screen);
+  delay(2000);
+  PlaceBoat(screen, Base2);
+  delay(2000);
 
-    //Build P1
-    P1(screen);
-    delay(2000);
-    Build(screen);
-    delay(2000);
-    PlaceBoat(screen, Base1);
-    delay(2000);
-
-    //Build P2;
-    P2(screen);
-    delay(2000);
-    Build(screen);
-    delay(2000);
-    PlaceBoat(screen, Base2);
-    delay(2000);
-
+  while (true) {
     /*
-      Atack
-    */
+      Atack 
 
-    //P2 Attack;
+      P1 -> P2
+    */
+    //P1 Attack;
     P1(screen);
     delay(2000);
     Fight(screen);
@@ -59,15 +66,64 @@ void loop() {
     Atack(screen, Attack2, Base2);
     delay(2000);
 
-    //P1 Base;
+    //P2 Base;
     P2(screen);
     delay(2000);
     Home(screen);
     delay(2000);
     DisplayMask(screen, Base2);
     delay(2000);
+    if (isGameFinish(Base2)) {
+      End(screen, 1);
+      break;
+    }
+    /*
+      Atack
 
+      P2 -> P1
+    */
+    //P2 Attack;
+    P2(screen);
+    delay(2000);
+    Fight(screen);
+    delay(2000);
+    Atack(screen, Attack1, Base1);
+    delay(2000);
+
+    //P1 Base;
+    P1(screen);
+    delay(2000);
+    Home(screen);
+    delay(2000);
+    DisplayMask(screen, Base1);
+    delay(2000);
+    if (isGameFinish(Base1)) {
+      End(screen, 2);
+      break;   
+    }
+
+  }
 }
+
+bool isGameFinish(byte base) {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (((info[i][j] & base))) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+void End(Component::Max72XX& screen, int player)
+{
+  (player == 1) ? P1(screen) : P2(screen);
+  delay(2000);
+  Win(screen);
+  delay(2000);
+}
+
 
 void DisplayMask(Component::Max72XX& screen, byte base) {
   None(screen);

@@ -1,5 +1,16 @@
 #include "../Components.hpp"
 
+void Win(Component::Max72XX& max72xx) {
+  max72xx.TurnRow(0, 0, B10001000);
+  max72xx.TurnRow(0, 1, B10101000);
+  max72xx.TurnRow(0, 2, B01010010);
+  max72xx.TurnRow(0, 3, B00000010);
+  max72xx.TurnRow(0, 4, B10010010);
+  max72xx.TurnRow(0, 5, B11010000);
+  max72xx.TurnRow(0, 6, B10110000);
+  max72xx.TurnRow(0, 7, B10010000);
+}
+
 void None(Component::Max72XX& max72xx) {
   max72xx.TurnRow(0, 0, B00000000);
   max72xx.TurnRow(0, 1, B00000000);
